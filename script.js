@@ -29,6 +29,46 @@ const navLinks4 = document.getElementById('nav-link-4');
 const navLinks5 = document.getElementById('nav-link-5');
 const navLinks6 = document.getElementById('nav-link-6');
 
+//theme mode - light and dark theme
+document.addEventListener('DOMContentLoaded', function() {
+  let lightMode = localStorage.getItem('lightMode');
+  const themeIcon = document.getElementById('theme-icon');
+  const header = document.getElementById('header');
+  const imageChange = document.getElementById('change-image');
+  const titles = document.getElementById('title');
+
+  const enableLightTheme = () => {
+    document.body.classList.add('light-theme');
+    themeIcon.src = 'Assets/moon.png';
+    header.style.backgroundColor = 'rgba(255, 255, 255, 0.507)';
+    if (imageChange) imageChange.src = 'Assets/1727733792057.jpg';
+    if (titles) titles.style.color = '#111827';
+    localStorage.setItem('lightMode', 'enable');
+  }
+
+  const disableLightTheme = () => {
+    document.body.classList.remove('light-theme');
+    themeIcon.src = 'Assets/sun.png';
+    header.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    if (imageChange) imageChange.src = 'Assets/1727722792057.jpg';
+    if (titles) titles.style.color = '#f9fafb';
+    localStorage.setItem('lightMode', 'disable');
+  }
+
+  if (lightMode === 'enable') {
+    enableLightTheme();
+  }
+
+  themeIcon.addEventListener('click', () => {
+    lightMode = localStorage.getItem('lightMode');
+    if (lightMode !== 'enable') {
+      enableLightTheme();
+    } else {
+      disableLightTheme();
+    }
+  });
+});
+
 menuOpen.addEventListener('click', () => {
   menuOpen.classList.toggle('openmenu');
   navBar.classList.toggle('active');
@@ -95,42 +135,40 @@ const swiperCards = new Swiper(".sevices-inner", {
 });
 
 //theme mode - light and dark theme
-let lightMode = localStorage.getItem('lightMode');
-const themeIcon = document.getElementById('theme-icon');
-const header = document.getElementById('header');
-const imageChange = document.getElementById('change-image');
-const titles = document.getElementById('title');
+// let lightMode = localStorage.getItem('lightMode');
+// const themeIcon = document.getElementById('theme-icon');
+// const header = document.getElementById('header');
+// const imageChange = document.getElementById('change-image');
+// const titles = document.getElementById('title');
 
-const enableLightTheme = () => {
-  document.body.classList.add('light-theme');
-  themeIcon.src = 'Assets/moon.png';
-  header.style.backgroundColor = 'rgba(255, 255, 255, 0.507)';
-  imageChange.src = 'Assets/1727733792057.jpg';
-  // titles.style.color = '#111827';
-  localStorage.setItem('lightMode', 'enable');
-}
+// const enableLightTheme = () => {
+//   document.body.classList.add('light-theme');
+//   themeIcon.src = 'Assets/moon.png';
+//   header.style.backgroundColor = 'rgba(255, 255, 255, 0.507)';
+//   imageChange.src = 'Assets/1727733792057.jpg';
+//   // titles.style.color = '#111827';
+//   localStorage.setItem('lightMode', 'enable');
+// }
 
-const disableLightTheme = () => {
-  document.body.classList.remove('light-theme');
-  themeIcon.src = 'Assets/sun.png';
-  header.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-  imageChange.src = 'Assets/1727722792057.jpg';
-  // titles.style.color = '#f9fafb';
-  localStorage.setItem('lightMode', 'disable');
-}
+// const disableLightTheme = () => {
+//   document.body.classList.remove('light-theme');
+//   themeIcon.src = 'Assets/sun.png';
+//   header.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+//   imageChange.src = 'Assets/1727722792057.jpg';
+//   // titles.style.color = '#f9fafb';
+//   localStorage.setItem('lightMode', 'disable');
+// }
 
-if (lightMode === 'enable') {
-  enableLightTheme();
-}
+// if (lightMode === 'enable') {
+//   enableLightTheme();
+// }
 
-themeIcon.addEventListener('click', () => {
-  lightMode = localStorage.getItem('lightMode');
-  if (lightMode !== 'enable') {
-    enableLightTheme();
-  } else {
-    disableLightTheme();
-  }
+// themeIcon.addEventListener('click', () => {
+//   lightMode = localStorage.getItem('lightMode');
+//   if (lightMode !== 'enable') {
+//     enableLightTheme();
+//   } else {
+//     disableLightTheme();
+//   }
 
-})
-
-
+// })
